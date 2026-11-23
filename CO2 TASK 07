@@ -1,0 +1,50 @@
+
+#include <stdio.h>
+
+unsigned long checks = 0;
+
+int is_prime(unsigned long n)
+{
+    checks = 0;
+
+    if (n < 2)
+        return 0;
+
+    if (n == 2)
+        return 1;
+
+    if (n % 2 == 0)
+    {
+        checks++;
+        return 0;
+    }
+
+    checks++;
+
+    for (unsigned long i = 3; i <= n / i; i += 2)
+    {
+        checks++;
+
+        if (n % i == 0)
+            return 0;
+    }
+
+    return 1;
+}
+
+int main()
+{
+    unsigned long n;
+
+    printf("Enter Ticket Number: ");
+    scanf("%lu", &n);
+
+    if (is_prime(n))
+        printf("%lu is Prime\n", n);
+    else
+        printf("%lu is Not Prime\n", n);
+
+    printf("Division Checks: %lu\n", checks);
+
+    return 0;
+}
