@@ -1,0 +1,47 @@
+
+#include <stdio.h>
+
+int calls = 0;
+
+int verify_disability(int card)
+{
+    calls++;
+    return card == 1;
+}
+
+int main()
+{
+    int n, senior, eligible, card;
+    int concession, i;
+
+    printf("Enter Number of Passengers: ");
+    scanf("%d", &n);
+
+    for (i = 1; i <= n; i++)
+    {
+        printf("\nPassenger %d\n", i);
+
+        printf("Senior Citizen (1/0): ");
+        scanf("%d", &senior);
+
+        printf("Eligible Ticket (1/0): ");
+        scanf("%d", &eligible);
+
+        printf("Disability Card (1/0): ");
+        scanf("%d", &card);
+
+        if ((senior && eligible) ||
+            verify_disability(card))
+        {
+            printf("Concession Granted\n");
+        }
+        else
+        {
+            printf("No Concession\n");
+        }
+    }
+
+    printf("\nVerification Function Calls: %d\n", calls);
+
+    return 0;
+}
